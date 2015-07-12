@@ -70,11 +70,12 @@ workq_t workq;
  * of a given element, and if that branch terminates will
  * also update the max_k achieved if a new max_k is achieved.
  */
-list_ends branch(proj_space *arg)
+list_ends branch(proj_space *arg){
     //We are going to return a pointers of the start and end of a linked list
     //of new branches we will then go through.
     //branch should live in a pool
-    
+    int i,j;
+    long int dmin,dmax;
     //create first element to use.
     list_ends stack_ends;
     stack_ends.first=NULL;
@@ -84,7 +85,7 @@ list_ends branch(proj_space *arg)
         err_abort (ENOMEM, "Pool out of memory");
         }
     //start thinking:
-    h=arg->A[0]+arg->A[1]+arg->A[2]+arg->A[3]+arg->A[4];
+    long int h=arg->A[0]+arg->A[1]+arg->A[2]+arg->A[3]+arg->A[4];
     dmin=arg->k+3-h;
     dmax=arg->k+4-h;
     
